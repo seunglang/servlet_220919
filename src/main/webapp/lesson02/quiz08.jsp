@@ -18,9 +18,9 @@
 			<table class="table ">
 				<thead>
 					<tr>
-						<th>id</th>
-						<th>표지</th>
-						<th>제목</th>
+						<th class="pl-4">id</th>
+						<th class="pl-4">표지</th>
+						<th class="text-center">제목</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -32,7 +32,7 @@
 			            put("title", "아몬드"); 
 			            put("author", "손원평"); 
 			            put("publisher", "창비");
-			            put("image", "/lesson02/images/x9788934972464.jpg");
+			            put("image", "http://image.kyobobook.co.kr/images/book/xlarge/267/x9788936434267.jpg");
 			        } 
 			    };
 			    list.add(map);
@@ -71,12 +71,11 @@
 			    list.add(map);
 			    for (Map<String, Object> book : list) {
 			    	
-			    
 				%>
 					<tr>
 						<td><%= book.get("id") %></td>
-						<td><%= book.get("image") %></td>
-						<td><a href="#"><%= book.get("title") %></a></td>
+						<td><img src="<%= book.get("image") %>" width="70" height="90"></td>
+						<td class="text-center"><a href="/lesson02/quiz08_1.jsp?type=<%= book.get("id")%>"><%= book.get("title") %></a></td>
 					</tr>
 				</tbody>
 				<%
