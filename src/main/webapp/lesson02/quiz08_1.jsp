@@ -12,6 +12,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+	<!-- 선생님 풀이 - 테이블에 보여줄 책 정보 미리 뽑아내기 -->
+	<%-- <%
+		int id = Integer.parseInt(request.getParameter("id"));
+		Map<String, Object> target = new HashMap<>();
+		for (Map<String, Object> item : list) {
+			if ((int)item.get("id") == id) {
+				target = item;
+				break;
+			}
+		}
+	%> --%>
+	
 	<%
 	List<Map<String, Object>> list = new ArrayList<>();
     Map<String, Object> map = new HashMap<String, Object>() {
@@ -83,6 +95,18 @@
 				</tr>
 			</table>
 		</div>
+		
+		<!-- 선생님 풀이 - 테이블 대신 div 사용 -->
+	<%--<div class="container d-flex">
+			<div>
+				<img src="<%= target.get("image") %> alt="표지" width="300">
+			</div>
+			<div>
+				<span class="display-1 d-block font-weight-bold"><%= target.get("title") %></span>			
+				<div class="display-2 text-info"><%= target.get("author") %></div>
+				<div class="display-4 text-secondary"><%= target.("publisher") %></div>
+			</div>
+		</div> --%>
 	<%
 				}
 			}

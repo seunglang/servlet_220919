@@ -74,13 +74,13 @@
 				%>
 					<tr>
 						<td><%= book.get("id") %></td>
-						<td><img src="<%= book.get("image") %>" width="70" height="90"></td>
+						<td><img src="<%= book.get("image") %>" width="70" height="90" alt="표지"></td>
 						<td class="text-center"><a href="/lesson02/quiz08_1.jsp?type=<%= book.get("id")%>"><%= book.get("title") %></a></td>
 					</tr>
-				</tbody>
 				<%
 			    	}	
 				%>
+				</tbody>
 			</table>
 		</form>
 	</div>
