@@ -1,7 +1,7 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="border border-success p-3 d-flex">
+			<div class="border border-success p-3 d-flex">
 				<%
 					Map<String, Object> artistInfo = new HashMap<>();
 				    artistInfo.put("name", "아이유");
@@ -107,7 +107,7 @@
 					%>
 						<tr>
 							<td><%= item.get("id") %></td>
-							<td><a href="/lesson03/quiz02/melon.jsp?id=<%=item.get("id") %>"><%= item.get("title") %></a></td>
+							<td><a href="/lesson03/quiz02/detail_template.jsp?id=<%=item.get("id") %>"><%= item.get("title") %></a></td>
 							<td><%= item.get("album") %></td>
 						</tr>
 					<%
