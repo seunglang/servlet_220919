@@ -52,6 +52,7 @@
 			
 			for (Map<String, String> item : list) {
 				String category = request.getParameter("category");
+				// 카테고리가 null일 때(전체) 또는 카테고리명이 일치할 때
 				if (item.get("category").equals(category) || category == null || category.equals("전체")) {
 			%>
 				<tr>
