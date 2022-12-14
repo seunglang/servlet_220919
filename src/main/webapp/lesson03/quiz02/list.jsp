@@ -3,16 +3,19 @@
     pageEncoding="UTF-8"%>
 			<div class="border border-success p-3 d-flex">
 				<%
+				
 					Map<String, Object> artistInfo = new HashMap<>();
 				    artistInfo.put("name", "아이유");
 				    artistInfo.put("debute", 2008);
 				    artistInfo.put("agency", "EDAM엔터테인먼트");
 				    artistInfo.put("photo", "http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG");
+				    
 				%>
+					
 					<div class="mr-3">
 						<img src="<%= artistInfo.get("photo") %>" width="150px" alt="사진">
 					</div>
-					<div class="">
+					<div>
 							<h3 class="d-block"><%= artistInfo.get("name") %></h3>
 							<span class="d-block"><%= artistInfo.get("agency") %></span>
 							<span class="d-block"><%= artistInfo.get("debute") %> 데뷔</span>
@@ -30,9 +33,9 @@
 					</thead>
 					<tbody>
 					<%
-					// 아이유 노래 리스트 
+						// 아이유 노래 리스트 
 					    List<Map<String, Object>> musicList = new ArrayList<>();
-	
+		
 					    Map<String, Object> musicInfo = new HashMap<>();
 					    musicInfo.put("id", 1);
 					    musicInfo.put("title", "팔레트");
@@ -43,7 +46,7 @@
 					    musicInfo.put("composer", "아이유");
 					    musicInfo.put("lyricist", "아이유");
 					    musicList.add(musicInfo);
-	
+		
 					    musicInfo = new HashMap<>();
 					    musicInfo.put("id", 2);
 					    musicInfo.put("title", "좋은날");
@@ -54,7 +57,7 @@
 					    musicInfo.put("composer", "이민수");
 					    musicInfo.put("lyricist", "김이나");
 					    musicList.add(musicInfo);
-	
+		
 					    musicInfo = new HashMap<>();
 					    musicInfo.put("id", 3);
 					    musicInfo.put("title", "밤편지");
@@ -65,7 +68,7 @@
 					    musicInfo.put("composer", "제휘,김희원");
 					    musicInfo.put("lyricist", "아이유");
 					    musicList.add(musicInfo);
-	
+		
 					    musicInfo = new HashMap<>();
 					    musicInfo.put("id", 4);
 					    musicInfo.put("title", "삐삐");
@@ -76,7 +79,7 @@
 					    musicInfo.put("composer", "이종훈");
 					    musicInfo.put("lyricist", "아이유");
 					    musicList.add(musicInfo);
-	
+		
 					    musicInfo = new HashMap<>();
 					    musicInfo.put("id", 5);
 					    musicInfo.put("title", "스물셋");
@@ -87,7 +90,7 @@
 					    musicInfo.put("composer", "아이유,이종훈,이채규");
 					    musicInfo.put("lyricist", "아이유");
 					    musicList.add(musicInfo);
-	
+		
 					    musicInfo = new HashMap<>();
 					    musicInfo.put("id", 6);
 					    musicInfo.put("title", "Blueming");
@@ -97,17 +100,14 @@
 					    musicInfo.put("time", 217);
 					    musicInfo.put("composer", "아이유,이종훈,이채규");
 					    musicInfo.put("lyricist", "아이유");
-					    musicList.add(musicInfo);
-					    
+					    musicList.add(musicInfo);    
+					
 					    for (Map<String, Object> item : musicList) {
-					    	// 첫번째 방법: melon_1.jsp 생성 후 content까지 복붙, content의 bottom부턴 새로 꾸며서 만들기
-					    	// 두번째 방법: toggle 이용해서 hide와 show를 해보기
-					    	// 세번째 방법: jsp:include 사용해서 필요한 곳까지 가져온 후 나머지 작성
-					    	// 조각 페이지 생각 X 곡목록 , 상세페이지가 따로 존재함 melon_detail.jsp 생성
+					    	
 					%>
 						<tr>
 							<td><%= item.get("id") %></td>
-							<td><a href="/lesson03/quiz02/detail_template.jsp?id=<%=item.get("id") %>"><%= item.get("title") %></a></td>
+							<td><a href="/lesson03/quiz02/detail_template.jsp?title=<%=item.get("title") %>"><%= item.get("title") %></a></td>
 							<td><%= item.get("album") %></td>
 						</tr>
 					<%

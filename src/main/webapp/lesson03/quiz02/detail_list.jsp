@@ -74,16 +74,24 @@
 				    musicInfo.put("lyricist", "아이유");
 				    musicList.add(musicInfo);
 				    
-				    int id = Integer.parseInt(request.getParameter("id"));
+				    String keyword = request.getParameter("keyword");
+				    boolean nullCheck1 = keyword != null;
+				    String titles = request.getParameter("title");
+				    boolean nullCheck2 = titles != null;
+				    
 				    for (Map<String, Object> item : musicList) {
-				    	if ((int)item.get("id") == id) {
+				    	
+					    //int id = Integer.parseInt(request.getParameter("id"));
+				    	String title = (String)item.get("title");
+				    		
+				    	if ((title.equals(titles) && nullCheck2) || (title.equals(keyword) && nullCheck1)) {
 				    		
 				%>
 					<div class="mr-4">
 						<img src="<%= item.get("thumbnail") %>" width="200px" alt="사진">
 					</div>
 						<div>
-							<div class="display-4"><%= item.get("title") %></div>
+							<div class="display-4"><%= title %></div>
 							<div class="text-success font-weight-bold"><%= item.get("singer") %></div><br>
 						<div class="d-flex">	
 							<div class="mr-4">
@@ -101,8 +109,8 @@
 						</div>	
 					</div>	
 				<%
-				    	}
-					}
+				    		}
+						}
 				%>
 			</div>
 			<div class="mt-5">
