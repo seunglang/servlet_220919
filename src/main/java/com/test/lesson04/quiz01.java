@@ -41,11 +41,20 @@ public class quiz01 extends HttpServlet{
 		try {
 			ResultSet resultSet = ms.select(selectQuery);
 			while (resultSet.next()) { // 결과행이 있는 동안 수행된다.
-				out.println(resultSet.getInt("id"));
-				out.println(resultSet.getString("address"));
+				if (resultSet.getInt("id") <= 10) {
+					//out.print(resultSet.getInt("id"));
+					out.print("매물 주소: ");
+					out.print(resultSet.getString("address") + ", 면적: ");
+					out.print(resultSet.getInt("area") + ", 타입: ");
+					out.print(resultSet.getString("type"));
+					out.println();
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		// DB 연결 해제
+		ms.disconnect();
 	}
 }
