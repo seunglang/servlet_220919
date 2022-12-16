@@ -21,7 +21,7 @@ public class quiz01 extends HttpServlet{
 		
 		// DB 연결
 		MysqlService ms = MysqlService.getInstance();
-		ms.connect(); // 꼭 넣자
+		ms.connect(); // 꼭 넣자 (진짜 연결 시작)
 		
 		// DB insert 한 행
 		String insertQuery = "insert into `real_estate`"
@@ -38,6 +38,10 @@ public class quiz01 extends HttpServlet{
 		// DB select & 결과 출력
 		PrintWriter out = response.getWriter();
 		String selectQuery = "select * from `real_estate`";
+		// String selectQuery = "select `address`, `area`, `type`
+//		from `real_estate`
+//		order by `id` desc
+//		limit 10;"
 		try {
 			ResultSet resultSet = ms.select(selectQuery);
 			while (resultSet.next()) { // 결과행이 있는 동안 수행된다.
@@ -55,6 +59,6 @@ public class quiz01 extends HttpServlet{
 		}
 		
 		// DB 연결 해제
-		ms.disconnect();
+		ms.disconnect();	
 	}
 }
