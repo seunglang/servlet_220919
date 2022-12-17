@@ -21,6 +21,7 @@ public class quiz02Insert extends HttpServlet{
 		String name = request.getParameter("name");
 		String url = request.getParameter("url"); // 수정 요망
 		
+		
 		// DB 연결
 		MysqlService ms = MysqlService.getInstance();
 		ms.connect();

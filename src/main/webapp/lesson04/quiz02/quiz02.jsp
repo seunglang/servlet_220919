@@ -19,11 +19,23 @@
 		<h1>즐겨찾기 추가</h1>
 			<form method="get" action="/lesson04/quiz02_insert">
 					<span>사이트명:</span><br>
-					<input type="text" class="form-control col-2" name="name">
+					<input type="text" id="nme" class="form-control col-2" name="name">
 					<div>사이트 주소:</div>
 					<input type="text" class="form-control col-4" name="url">
-				<button type="submit" class="btn btn-success mt-3">추가</button>
+				<button type="submit" id="button" class="btn btn-success mt-3">추가</button>
 			</form>
 	</div>
+					<!-- <script>
+						$(document).ready(function()) {
+							// 버튼 클릭 시 내용이 비어있으면 alert
+							var name = $('#nme').val().trim();
+							$('#button').on('click', function() {
+								if (name == "") {
+									alert("내용이 비어있습니다.");
+									return;
+								}
+							})
+						}
+					</script> -->
 </body>
 </html>
