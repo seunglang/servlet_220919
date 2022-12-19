@@ -26,6 +26,8 @@
     	.btn-color {background-color:#E3DFDF;}
     	footer {height:100px}
     </style>
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 <%
@@ -48,8 +50,8 @@
 				<form method="post" action="/lesson04/quiz03_insert">
 					<div class="d-flex">
 						<div class="d-flex justify-content-between col-9">
-							<select class="form-control col-4" name="nickName">
-								<option selected>✓-아이디 선택-</option>
+							<select class="form-control col-4" id="seller" name="nickName">
+								<option value="0" selected>✓-아이디 선택-</option>
 							<%
 								while(rs.next()) {
 							%>
@@ -58,11 +60,11 @@
 								}
 							%>
 							</select>
-							<input type="text" class="form-control col-7 mr-3" name="title" placeholder="제목">
+							<input type="text" class="form-control col-7 mr-3" id="titleText" name="title" placeholder="제목">
 						</div>
 						
 						<div class="input-group col-3 d-flex justify-content-end">
-						    <input type="text" class="form-control col-10" name="price" placeholder="가격">
+						    <input type="text" class="form-control col-10" id="priceText" name="price" placeholder="가격">
 						    <div class="input-group-append">
 						      	<span class="input-group-text">원</span>
 						    </div>
@@ -70,21 +72,56 @@
 					</div>
 					
 					<div class="mt-3">
-						<textarea rows="5" cols="15" name="intro" class="form-control"></textarea>
+						<textarea rows="5" cols="15" id="introduction" name="intro" class="form-control"></textarea>
 					</div>
 					<div class="mt-3">
 						 <div class="input-group">
 						    <div class="input-group-prepend">
 						      	<span class="input-group-text">이미지 url</span>
 						    </div>
-						    <input type="text" class="form-control" name="url">
+						    <input type="text" class="form-control" id="urls" name="url">
 						 </div>
 					</div>
-					<input type="submit" class="btn btn-color form-control mt-3" value="저장">
+					<input type="submit" class="btn btn-color form-control mt-3" id="saveBtn" value="저장">
 				</form>
 			</article>
 		</section>
 		<jsp:include page="/lesson04/quiz03/footer.jsp" />
 	</div>
+	
+	<script>
+		// jqeury 를 통해서 판매자, 제목, 가격에 유효성 검사를 해서 비어있는 값이 넘어가지 않도록 하세요.
+		$(document).ready(function() {
+			$('#saveBtn').on('click', function() {
+				var priceText = $('#priceText').val().trim();
+				var titleText = $('#titleText').val().trim();
+				var intro = $('#introduction').val().trim();
+				var seller = $('#seller option:selected').val();
+				var url = $('#urls').val().trim();
+				
+				if (seller == 0) {
+					alert("판매자를 선택하세요");
+					return;
+				}
+				if (titleText == "") {
+					alert("제목을 입력하세요");
+					$("#btn").attr("disabled", true);
+					return;
+				}
+				if (inro == "") {
+					alert("내용을 입력하세요");
+					return;
+				}
+				if (priceText == "") {
+					alert("가격을 입력하세요");
+					return;
+				}
+				if (url.startsWith("http") == false) {
+					alert("이미지 주소를 제대로 입력하세요");
+					return;
+				}
+			})
+		})
+	</script>
 </body>
 </html>

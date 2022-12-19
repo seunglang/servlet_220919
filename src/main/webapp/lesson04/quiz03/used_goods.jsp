@@ -22,6 +22,7 @@
     	.nav-item > .nav-link:hover {color:brown}
     	.text-size {color:#fff; font-weight:bold; font-size:18px}
     	.contents {height:auto;}
+    	.font-size-title {font-size:18px;}
     	.text-color-carrot {color:#F8823E; font-weight-bold}
     	.borders {border: 2px solid #F8823E}
     	.borders:hover {background-color:#E1C991;}
@@ -46,13 +47,24 @@
 			<div class="d-flex justify-content-between containers pt-3">
 			<%
 				while(rs.next()) {
-					
+				
 			%>
 				<div class="borders p-2 mb-3">
+				<%
+					if (rs.getURL("pictureUrl") == null) {
+					
+				%>
+					<div><img src="https://3.bp.blogspot.com/-ZKBbW7TmQD4/U6P_DTbE2MI/AAAAAAAADjg/wdhBRyLv5e8/s1600/noimg.gif" width="320" height="200"></div>
+				<%
+					} else {
+				%>
 					<div><img src="<%= rs.getURL("pictureUrl") %>" width="320" height="200"></div>
-					<div><%= rs.getString("title") %></div>
+				<%
+					}
+				%>	
+					<div class="font-size-title font-weight-bold"><%= rs.getString("title") %></div>
 					<div><%= rs.getInt("price") %></div>
-					<div class="text-color-carrot"><%= rs.getString("nickname") %></div>
+					<div class="text-color-carrot font-weight-bold"><%= rs.getString("nickname") %></div>
 				</div>
 			<%
 				}
