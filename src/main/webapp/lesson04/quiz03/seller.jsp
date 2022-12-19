@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.test.common.MysqlService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,6 +28,15 @@
     </style>
 </head>
 <body>
+<%
+	// DB 연결
+	MysqlService ms = MysqlService.getInstance();
+	ms.connect();
+	
+	// db select query
+	String selectQuery = "select * from `seller`";
+	ResultSet rs = ms.select(selectQuery);
+%>
 	<div id="wrap">
 		<jsp:include page="/lesson04/quiz03/header.jsp" />
 		<jsp:include page="/lesson04/quiz03/nav.jsp" />
@@ -34,20 +45,24 @@
 				<div class="display-4">물건 올리기</div>
 			</article>
 			<article class="bottom col-10">
-				<form method="get" action="/lesson04/quiz03/used_goods.jsp">
+				<form method="post" action="/lesson04/quiz03_insert">
 					<div class="d-flex">
 						<div class="d-flex justify-content-between col-9">
-							<select class="form-control col-4">
-								<option>마로비</option>
-								<option>아메리카노</option>
-								<option>최준</option>
-								<option>빠다</option>
+							<select class="form-control col-4" name="nickName">
+								<option selected>✓-아이디 선택-</option>
+							<%
+								while(rs.next()) {
+							%>
+								<option value="<%= rs.getInt("id") %>"><%= rs.getString("nickname") %></option>
+							<%
+								}
+							%>
 							</select>
 							<input type="text" class="form-control col-7 mr-3" name="title" placeholder="제목">
 						</div>
 						
 						<div class="input-group col-3 d-flex justify-content-end">
-						    <input type="text" class="form-control col-10" placeholder="가격">
+						    <input type="text" class="form-control col-10" name="price" placeholder="가격">
 						    <div class="input-group-append">
 						      	<span class="input-group-text">원</span>
 						    </div>

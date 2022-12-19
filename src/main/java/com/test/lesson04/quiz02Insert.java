@@ -14,7 +14,7 @@ import com.test.common.MysqlService;
 public class quiz02Insert extends HttpServlet{
 	
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// content type 생략 - 다른 페이지로 보낼 예정(quiz02.jsp)
 		
 		// request parameter 꺼내기
